@@ -22,6 +22,7 @@ public class TestKeepAlive {
   protected static final Logger logger = LoggerFactory.getLogger(TestKeepAlive.class);
 
   private static final int THREADS = 2;
+  private static final int SLEEP_TIME = 1000;
   private static final String TEST_URL = "http://yunpian.com/v1/sms/send.json";
   private static final String TEST_HTTPS_URL = "https://yunpian.com/v1/sms/send.json";
 
@@ -45,7 +46,7 @@ public class TestKeepAlive {
               long start = System.currentTimeMillis();
               String resp = HttpPostUtil.requestString(url, null, httpclient);
               logger.warn("short," + url + "," + (System.currentTimeMillis() - start) + "," + resp);
-              Thread.sleep(500);
+              Thread.sleep(SLEEP_TIME);
             } catch (Exception e) {
               logger.warn("", e);
             } finally {
@@ -76,7 +77,7 @@ public class TestKeepAlive {
               long start = System.currentTimeMillis();
               String resp = HttpPostUtil.requestString(url, null, httpClient);
               logger.info("keep," + url + "," + (System.currentTimeMillis() - start) + "," + resp);
-              Thread.sleep(500);
+              Thread.sleep(SLEEP_TIME);
             } catch (Exception e) {
               logger.warn("", e);
             }
